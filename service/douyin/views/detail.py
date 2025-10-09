@@ -20,7 +20,7 @@ async def detail(id: str):
         if res == {} or not succ:
             logger.error(f'get video detail failed. account: {account_id}, id: {id}')
             continue
-        logger.info(f'get video detail success, account: {account_id}, id: {id}, res: {res}')
+        logger.info(f'get video detail success, account: {account_id}, id: {id}')
         return reply(ErrorCode.OK, '成功' , res)
     logger.warning(f'get video detail failed. id: {id}')
     return reply(ErrorCode.NO_ACCOUNT, '请先添加账号')

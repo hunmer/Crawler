@@ -17,7 +17,7 @@ async def search(keyword: str, sort: str = "general", offset: int = 0, limit: in
             continue
         account_id = account.get('id', '')
         res = await request_search(keyword, account.get('cookie', ''), sort, offset, limit)
-        logger.info(f'search success, account: {account_id}, keyword: {keyword}, sort: {sort}, offset: {offset}, limit: {limit}, res: {res}')
+        logger.info(f'search success, account: {account_id}, keyword: {keyword}, sort: {sort}, offset: {offset}, limit: {limit}')
         return reply(ErrorCode.OK, '成功' , res)
     logger.warning(f'search failed. keyword: {keyword}, sort: {sort}, offset: {offset}, limit: {limit}')
     return reply(ErrorCode.NO_ACCOUNT, '请先添加账号')

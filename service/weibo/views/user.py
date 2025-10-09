@@ -17,7 +17,7 @@ async def user(id: str, offset: int = 0, limit: int = 5):
             continue
         account_id = account.get('id', '')
         res = await request_user(id, account.get('cookie', ''), offset, limit)
-        logger.info(f'get user detail success, account: {account_id}, id: {id}, res: {res}')
+        logger.info(f'get user detail success, account: {account_id}, id: {id}')
         return reply(ErrorCode.OK, '成功' , res)
     logger.warning(f'get user detail failed. id: {id}')
     return reply(ErrorCode.NO_ACCOUNT, '请先添加账号')

@@ -19,7 +19,7 @@ async def replys(id: str, comment_id: str, offset: int = 0, limit: int = 10):
         if res == {} or not succ:
             logger.error(f'get reply failed, account: {account_id}, id: {id}, comment_id: {comment_id}, offset: {offset}, limit: {limit}')
             continue
-        logger.info(f'get reply success, id: {id}, account: {account_id}, comment_id: {comment_id}, offset: {offset}, limit: {limit}, res: {res}')
+        logger.info(f'get reply success, id: {id}, account: {account_id}, comment_id: {comment_id}, offset: {offset}, limit: {limit}')
         return reply(ErrorCode.OK, '成功' , res)
     logger.warning(f'get reply failed, id: {id}, comment_id: {comment_id}, offset: {offset}, limit: {limit}')
     return reply(ErrorCode.NO_ACCOUNT, '请先添加账号')

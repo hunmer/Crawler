@@ -135,8 +135,8 @@ async def common_request(uri: str, params: dict, headers: dict) -> tuple[dict, b
     logger.info(
         f'url: {url}, request {url}, params={params}, headers={headers}')
     response = await requests.get(url, params=params, headers=headers)
-    logger.info(
-        f'url: {url}, params: {params}, response, code: {response.status_code}, body: {response.text}')
+    # logger.info(
+    #     f'url: {url}, params: {params}, response, code: {response.status_code}, body: {response.text}')
 
     if response.status_code != 200 or response.text == '':
         logger.error(

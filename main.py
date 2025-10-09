@@ -31,7 +31,7 @@ if __name__ == '__main__':
     CONFIG_PATH = args.file
     register_router()
     init_service()
-    uvicorn.run("main:app", host="0.0.0.0", port=8080)
+    uvicorn.run("main:app", host="0.0.0.0", port=8081)
 else:
     register_router()
     init_service()

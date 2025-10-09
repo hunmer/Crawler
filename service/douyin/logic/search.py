@@ -28,19 +28,16 @@ async def request_search(keyword: str, cookie: str, offset: int = 0, limit: int 
         'offset': offset,
         'count': limit
     }
-
-    # 处理 search_id
     if params and 'search_id' in params:
         search_id = params['search_id']
-        if search_id:
-            request_params['search_id'] = search_id
+        request_params['search_id'] = search_id
 
-            # 检查缓存,如果该 search_id 已有记录的 cookie,则使用缓存的 cookie
-            if search_id in _search_id_cache:
-                cookie = _search_id_cache[search_id]
-            else:
-                # 缓存当前 search_id 和 cookie 的映射
-                _search_id_cache[search_id] = cookie
+        # 检查缓存,如果该 search_id 已有记录的 cookie,则使用缓存的 cookie
+        if search_id in _search_id_cache:
+            cookie = _search_id_cache[search_id]
+        else:
+            # 缓存当前 search_id 和 cookie 的映射
+            _search_id_cache[search_id] = cookie
 
     headers = {"cookie": cookie}
     resp, succ = await common_request('/aweme/v1/web/general/search/single/', request_params, headers)

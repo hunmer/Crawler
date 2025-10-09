@@ -30,9 +30,9 @@ jobs:
     - name: Build and Push Docker image with date tag
       run: |
         DATE_TAG=$(date +%Y%m%d)
-        docker build . --file Dockerfile --tag shilongli0101/crawler:latest --tag shilongli0101/crawler:$DATE_TAG
-        docker push shilongli0101/crawler:latest
-        docker push shilongli0101/crawler:$DATE_TAG
+        docker build . --file Dockerfile --tag hunmer/crawler:latest --tag hunmer/crawler:$DATE_TAG
+        docker push hunmer/crawler:latest
+        docker push hunmer/crawler:$DATE_TAG
       
     - name: Log in to GitHub Container Registry
       run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
@@ -44,8 +44,8 @@ jobs:
         IMAGE_NAME=$(echo $IMAGE_NAME | tr '[A-Z]' '[a-z]')
         IMAGE_NAME_DATE=ghcr.io/${{ github.repository_owner }}/crawler:$DATE_TAG
         IMAGE_NAME_DATE=$(echo $IMAGE_NAME_DATE | tr '[A-Z]' '[a-z]')
-        docker tag shilongli0101/crawler:latest $IMAGE_NAME
-        docker tag shilongli0101/crawler:latest $IMAGE_NAME_DATE
+        docker tag hunmer/crawler:latest $IMAGE_NAME
+        docker tag hunmer/crawler:latest $IMAGE_NAME_DATE
         docker push $IMAGE_NAME
         docker push $IMAGE_NAME_DATE
 
@@ -55,11 +55,11 @@ jobs:
     - name: Tag and Push Docker image to Ali Container Registry
       run: |
         DATE_TAG=$(date +%Y%m%d)
-        IMAGE_NAME=registry.cn-hangzhou.aliyuncs.com/shilongli0101/crawler:latest
+        IMAGE_NAME=registry.cn-hangzhou.aliyuncs.com/hunmer/crawler:latest
         IMAGE_NAME=$(echo $IMAGE_NAME | tr '[A-Z]' '[a-z]')
-        IMAGE_NAME_DATE=registry.cn-hangzhou.aliyuncs.com/shilongli0101/crawler:$DATE_TAG
+        IMAGE_NAME_DATE=registry.cn-hangzhou.aliyuncs.com/hunmer/crawler:$DATE_TAG
         IMAGE_NAME_DATE=$(echo $IMAGE_NAME_DATE | tr '[A-Z]' '[a-z]')
-        docker tag shilongli0101/crawler:latest $IMAGE_NAME
-        docker tag shilongli0101/crawler:latest $IMAGE_NAME_DATE
+        docker tag hunmer/crawler:latest $IMAGE_NAME
+        docker tag hunmer/crawler:latest $IMAGE_NAME_DATE
         docker push $IMAGE_NAME
         docker push $IMAGE_NAME_DATE

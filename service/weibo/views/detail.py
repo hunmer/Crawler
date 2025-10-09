@@ -11,6 +11,6 @@ async def detail(id: str):
     # 微博可以游客访问，无cookie
     res, succ = await request_detail(id)
     if not succ:
-        logger.error(f'get weibo detail failed, id: {id}, res: {res}')
+        logger.error(f'get weibo detail failed, id: {id}')
         return reply(ErrorCode.INTERNAL_ERROR, '内部错误请重试')
     return reply(ErrorCode.OK, '成功', res)
